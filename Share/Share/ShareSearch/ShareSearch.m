@@ -8,10 +8,12 @@
 
 #import "ShareSearch.h"
 #import "BigWhiteViewController.h"
+#import "SearchUpload/SearchUploadViewController.h"
 
 @interface ShareSearch ()<UITextFieldDelegate>
 
 @property UITextField *shareSearchTextField;
+@property UIScrollView *shareSearchScrollView;
 
 @end
 
@@ -45,7 +47,6 @@
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navImage"] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     
-    
 /*------------------搜索栏------------------*/
     _shareSearchTextField = [[UITextField alloc]initWithFrame:CGRectMake(10, 10, 355, 50)];
     _shareSearchTextField.borderStyle = UITextBorderStyleRoundedRect;
@@ -64,7 +65,100 @@
     //修改Placeholder字体的颜色
     [_shareSearchTextField setValue:[UIColor blackColor] forKeyPath:@"_placeholderLabel.textColor"];
     
-    [self.view addSubview:_shareSearchTextField];
+    _shareSearchScrollView = [[UIScrollView alloc]initWithFrame:self.view.bounds];
+    _shareSearchScrollView.contentSize = CGSizeMake(375, 812);
+    _shareSearchScrollView.showsVerticalScrollIndicator = NO;
+    [self.view addSubview:_shareSearchScrollView];
+    [_shareSearchScrollView addSubview:_shareSearchTextField];
+    
+    UIImageView *classifyImageView = [[UIImageView alloc]initWithFrame:CGRectMake(10, 70, 355, 30)];
+    classifyImageView.image = [UIImage imageNamed:@"lines1.png"];
+    for (int i = 0; i < 4; i++) {
+        NSMutableArray *array = [NSMutableArray arrayWithObjects:@"平面设计", @"网页设计", @"UI/icon", @"插画/手绘", nil];
+        UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(10 + 91.25 * i, 110, 81.25, 30)];
+        [btn setTitle:[array objectAtIndex:i] forState:UIControlStateNormal];
+        btn.backgroundColor = [UIColor whiteColor];
+        [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        btn.layer.cornerRadius = 5;
+        btn.layer.masksToBounds = YES;
+        btn.titleLabel.font = [UIFont systemFontOfSize:15];
+        [btn addTarget:self action:@selector(changeButtonColor:) forControlEvents:UIControlEventTouchUpInside];
+        [_shareSearchScrollView addSubview:btn];
+    }
+    [_shareSearchScrollView addSubview:classifyImageView];
+    
+    UIButton *btn1 = [[UIButton alloc] initWithFrame:CGRectMake(10, 150, 90, 30)];
+    [btn1 setTitle:@"虚拟与设计" forState:UIControlStateNormal];
+    [btn1 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    btn1.layer.cornerRadius = 5;
+    btn1.layer.masksToBounds = YES;
+    btn1.titleLabel.font = [UIFont systemFontOfSize:15];
+    btn1.backgroundColor = [UIColor whiteColor];
+    [btn1 addTarget:self action:@selector(changeButtonColor:) forControlEvents:UIControlEventTouchUpInside];
+    [_shareSearchScrollView addSubview:btn1];
+    
+    UIButton *btn2 = [[UIButton alloc] initWithFrame:CGRectMake(110, 150, 76.875, 30)];
+    [btn2 setTitle:@"影视" forState:UIControlStateNormal];
+    [btn2 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    btn2.layer.cornerRadius = 5;
+    btn2.layer.masksToBounds = YES;
+    btn2.titleLabel.font = [UIFont systemFontOfSize:15];
+    btn2.backgroundColor = [UIColor whiteColor];
+    [btn2 addTarget:self action:@selector(changeButtonColor:) forControlEvents:UIControlEventTouchUpInside];
+    [_shareSearchScrollView addSubview:btn2];
+    
+    UIButton *btn3 = [[UIButton alloc] initWithFrame:CGRectMake(196.875, 150, 76.875, 30)];
+    [btn3 setTitle:@"摄影" forState:UIControlStateNormal];
+    [btn3 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    btn3.layer.cornerRadius = 5;
+    btn3.layer.masksToBounds = YES;
+    btn3.titleLabel.font = [UIFont systemFontOfSize:15];
+    btn3.backgroundColor = [UIColor whiteColor];
+    [btn3 addTarget:self action:@selector(changeButtonColor:) forControlEvents:UIControlEventTouchUpInside];
+    [_shareSearchScrollView addSubview:btn3];
+    
+    UIButton *btn4 = [[UIButton alloc] initWithFrame:CGRectMake(283.75, 150, 81.25, 30)];
+    [btn4 setTitle:@"其他" forState:UIControlStateNormal];
+    [btn4 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    btn4.layer.cornerRadius = 5;
+    btn4.layer.masksToBounds = YES;
+    btn4.titleLabel.font = [UIFont systemFontOfSize:15];
+    btn4.backgroundColor = [UIColor whiteColor];
+    [btn4 addTarget:self action:@selector(changeButtonColor:) forControlEvents:UIControlEventTouchUpInside];
+    [_shareSearchScrollView addSubview:btn4];
+    
+    UIImageView *goodImageView = [[UIImageView alloc]initWithFrame:CGRectMake(10, 190, 355, 30)];
+    goodImageView.image = [UIImage imageNamed:@"lines2.png"];
+    for (int i = 0; i < 4; i++) {
+        NSMutableArray *array = [NSMutableArray arrayWithObjects:@"人气最高", @"收藏最多", @"评论最多", @"编辑精选", nil];
+        UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(10 + 91.25 * i, 230, 81.25, 30)];
+        [btn setTitle:[array objectAtIndex:i] forState:UIControlStateNormal];
+        btn.backgroundColor = [UIColor whiteColor];
+        [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        btn.titleLabel.font = [UIFont systemFontOfSize:15];
+        btn.layer.cornerRadius = 5;
+        btn.layer.masksToBounds = YES;
+        [btn addTarget:self action:@selector(changeButtonColor:) forControlEvents:UIControlEventTouchUpInside];
+        [_shareSearchScrollView addSubview:btn];
+    }
+    [_shareSearchScrollView addSubview:goodImageView];
+    UIImageView *timeImageView = [[UIImageView alloc]initWithFrame:CGRectMake(10, 270, 355, 30)];
+    timeImageView.image = [UIImage imageNamed:@"lines3.png"];
+    for (int i = 0; i < 4; i++) {
+        NSMutableArray *array = [NSMutableArray arrayWithObjects:@"30分钟前", @"1小时前", @"1月前", @"1年前", nil];
+        UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(10 + 91.25 * i, 310, 81.25, 30)];
+        [btn setTitle:[array objectAtIndex:i] forState:UIControlStateNormal];
+        btn.backgroundColor = [UIColor whiteColor];
+        [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        btn.titleLabel.font = [UIFont systemFontOfSize:15];
+        btn.layer.cornerRadius = 5;
+        btn.layer.masksToBounds = YES;
+        [btn addTarget:self action:@selector(changeButtonColor:) forControlEvents:UIControlEventTouchUpInside];
+        [_shareSearchScrollView addSubview:btn];
+    }
+    [_shareSearchScrollView addSubview:timeImageView];
+    
+    
 }
 
 //键盘收起
@@ -85,8 +179,29 @@
 
 /*---------------------导航栏右边按钮 上传-----------------------*/
 - (void)upload{
+    /*----------------跳下一界面时，不显示分栏控制器--------------------*/
+    self.hidesBottomBarWhenPushed = YES ;
     
+    SearchUploadViewController *searchUploadViewController = [[SearchUploadViewController alloc]init];
+    [self.navigationController pushViewController:searchUploadViewController animated:YES];
 }
+
+- (void)viewDidDisappear:(BOOL)animated{
+    self.hidesBottomBarWhenPushed = NO;
+}
+
+
+- (void)changeButtonColor:(UIButton *)btn {
+    if ([btn.backgroundColor isEqual:[UIColor whiteColor]]) {
+        btn.backgroundColor = [UIColor colorWithRed:0.23f green:0.56f blue:0.80f alpha:1.00f];
+        [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    }
+    else{
+        btn.backgroundColor = [UIColor whiteColor];
+        [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    }
+}
+
 /*
 #pragma mark - Navigation
 

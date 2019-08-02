@@ -40,13 +40,16 @@
 - (void)layoutSubviews{
     _LeftImageView.frame = CGRectMake(0, 0, 130, 110);
     
-    _NameLabel.frame = CGRectMake(150, 10, 225, 20);
+    _NameLabel.frame = CGRectMake(150, 5, 225, 38);
+    _NameLabel.numberOfLines = 0;
+    _NameLabel.textAlignment = NSTextAlignmentLeft;
+    _NameLabel.font = [UIFont systemFontOfSize:15];
     
-    _TypeLabel.frame = CGRectMake(150, 40, 225, 15);
+    _TypeLabel.frame = CGRectMake(150, 48, 225, 15);
     _TypeLabel.font = [UIFont systemFontOfSize: 12];
     _TypeLabel.textColor = [UIColor grayColor];
     
-    _TimeLabel.frame = CGRectMake(150, 60, 225, 15);
+    _TimeLabel.frame = CGRectMake(150, 68, 225, 15);
     _TimeLabel.font = [UIFont systemFontOfSize:12];
     _TimeLabel.textColor = [UIColor grayColor];
     

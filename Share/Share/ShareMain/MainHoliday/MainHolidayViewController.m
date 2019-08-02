@@ -7,6 +7,7 @@
 //
 
 #import "MainHolidayViewController.h"
+#import "ScanImageNSObject.h"
 
 @interface MainHolidayViewController ()
 
@@ -79,6 +80,11 @@
     [_mainHolidayScrollView addSubview:holidayImageView4];
     
     
+    UITapGestureRecognizer *tapGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick1:)];
+    [holidayImageView1 addGestureRecognizer:tapGestureRecognizer1];
+    [holidayImageView1 setUserInteractionEnabled:YES];
+    
+    
 }
 
 /*--------------------------导航栏---------------------------*/
@@ -87,6 +93,11 @@
     [self.navigationController popViewControllerAnimated:YES] ;
 }
 
+
+-(void)scanBigImageClick1:(UITapGestureRecognizer *)tap{
+    UIImageView *clickedImageView = (UIImageView *)tap.view;
+    [ScanImageNSObject scanBigImageWithImageView:clickedImageView];
+}
 
 /*
 #pragma mark - Navigation

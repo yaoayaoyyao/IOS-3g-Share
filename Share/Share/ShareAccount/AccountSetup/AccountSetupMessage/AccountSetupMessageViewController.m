@@ -41,7 +41,6 @@
     
     [self.view addSubview:_accountSetupMessageTableView];
     _accountSetupMessageTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-
     
 }
 

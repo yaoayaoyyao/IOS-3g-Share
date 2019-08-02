@@ -71,13 +71,13 @@
 
 //选中 cell 时触发的方法
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    /*----------------跳下一界面时，不显示分栏控制器--------------------*/
+    self.hidesBottomBarWhenPushed = YES ;
     if (indexPath.section == 1) {
         if (indexPath.row == 0) {
             
         }
         else if (indexPath.row == 1){
-            /*----------------跳下一界面时，不显示分栏控制器--------------------*/
-            self.hidesBottomBarWhenPushed = YES ;
             
             AccountMessageViewController *accountMessageViewController = [[AccountMessageViewController alloc]init];
             [self.navigationController pushViewController:accountMessageViewController animated:YES];
@@ -85,15 +85,11 @@
         }
         else if (indexPath.row == 2) {
             
-            self.hidesBottomBarWhenPushed = YES;
-            
             AccountGoodViewController *accountGoodViewController = [[AccountGoodViewController alloc]init];
             [self.navigationController pushViewController:accountGoodViewController animated:YES];
             
         }
         else if (indexPath.row == 4){
-            /*----------------跳下一界面时，不显示分栏控制器--------------------*/
-            self.hidesBottomBarWhenPushed = YES ;
             
             AccountSetupViewController *accountSetupViewController = [[AccountSetupViewController alloc]init];
             //切换界面   NO：取消动画    不会卡页面

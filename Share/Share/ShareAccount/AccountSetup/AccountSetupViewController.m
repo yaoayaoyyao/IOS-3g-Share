@@ -65,6 +65,8 @@
     return shareAccountTableViewCell2;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    /*----------------跳下一界面时，不显示分栏控制器--------------------*/
+    self.hidesBottomBarWhenPushed = YES ;
     if (indexPath.row == 0) {
         
         AccountSetupIntroductionViewController  *accountSetupIntroductionViewController = [[AccountSetupIntroductionViewController alloc]init];

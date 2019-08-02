@@ -75,10 +75,13 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 2) {
+        /*----------------跳下一界面时，不显示分栏控制器--------------------*/
+        self.hidesBottomBarWhenPushed = YES ;
         AccountMessageFanViewController *accountMessageFanViewController = [[AccountMessageFanViewController alloc]init];
         [self.navigationController pushViewController:accountMessageFanViewController animated:YES];
     }
     else if (indexPath.row == 3){
+        self.hidesBottomBarWhenPushed = YES;
         AccountMessageChatViewController *accountMessageChatViewController = [[AccountMessageChatViewController alloc]init];
         [self.navigationController pushViewController:accountMessageChatViewController animated:YES];
     }
