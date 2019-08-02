@@ -9,7 +9,10 @@
 #import "SearchUploadViewController.h"
 #import "SearchUploadImage/SearchUploadImageViewController.h"
 
-@interface SearchUploadViewController ()<UIScrollViewDelegate,UITextViewDelegate,UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource>
+@interface SearchUploadViewController ()<UIScrollViewDelegate,UITextViewDelegate,UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource> {
+    NSString *nameOfImage;
+    NSString *numbleOfImage;
+}
 
 @property UIScrollView *searchUploadScrollView;
 @property UITextField *nameTextField;
@@ -18,6 +21,7 @@
 @property NSInteger flag;
 @property NSMutableArray *uploadMutableArray;
 @property NSMutableArray *upMutableArray;
+@property UIButton *imageButton;
 
 @end
 
@@ -48,12 +52,12 @@
     
 
 /*--------------------------图片---------------------------*/
-    UIButton *imageButton = [[UIButton alloc]initWithFrame:CGRectMake(10, 10, 200, 100)];
-    [imageButton setTitle:@"选择图片" forState:UIControlStateNormal];
-    [imageButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    imageButton.backgroundColor = [UIColor colorWithRed:0.83f green:0.83f blue:0.84f alpha:1.00f];
-    [imageButton addTarget:self action:@selector(choosePicture) forControlEvents:UIControlEventTouchUpInside];
-    [_searchUploadScrollView addSubview:imageButton];
+    _imageButton = [[UIButton alloc]initWithFrame:CGRectMake(10, 10, 200, 100)];
+    [_imageButton addTarget:self action:@selector(choosePicture) forControlEvents:UIControlEventTouchUpInside];
+    [_searchUploadScrollView addSubview:_imageButton];
+    [_imageButton setTitle:@"选择图片" forState:UIControlStateNormal];
+    [_imageButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    _imageButton.backgroundColor = [UIColor colorWithRed:0.83f green:0.83f blue:0.84f alpha:1.00f];
     
     UIImageView *locationImageView = [[UIImageView alloc]initWithFrame:CGRectMake(230, 25, 110, 30)];
     locationImageView.image = [UIImage imageNamed:@"dizhi.png"];
@@ -184,6 +188,12 @@
     self.hidesBottomBarWhenPushed = YES ;
 
     SearchUploadImageViewController *searchUploadImageViewController = [[SearchUploadImageViewController alloc]init];
+//    UINavigationController *navUpload = [[UINavigationController alloc]initWithRootViewController:searchUploadImageViewController];
+    
+    [searchUploadImageViewController returnText:^(NSString *name, NSString *numble){
+        self->nameOfImage = name;
+        self->numbleOfImage = numble;
+    }];
     [self.navigationController pushViewController:searchUploadImageViewController animated:YES];
 }
 
@@ -243,8 +253,20 @@
     }
 }
 
-
-
+- (void)viewWillAppear:(BOOL)animated{
+    if (nameOfImage != nil) {
+        [_imageButton setTitle:@"" forState:UIControlStateNormal];
+        [_imageButton setImage:[UIImage imageNamed:nameOfImage] forState:UIControlStateNormal];
+        _imageButton.backgroundColor = [UIColor clearColor];
+        UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(170, 10, 20, 20)];
+        [btn setTitle:numbleOfImage forState:UIControlStateNormal];
+        btn.backgroundColor = [UIColor colorWithRed:0.90f green:0.31f blue:0.05f alpha:1.00f];
+        [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_imageButton addSubview:btn];
+        btn.layer.cornerRadius = 10;
+        btn.layer.masksToBounds = YES;
+    }
+}
 
 
 /*

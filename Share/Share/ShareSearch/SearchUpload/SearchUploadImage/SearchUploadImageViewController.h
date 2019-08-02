@@ -9,8 +9,14 @@
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
-
+typedef void (^ReturnTextBlock)(NSString *name, NSString *numble);
 @interface SearchUploadImageViewController : UIViewController
+
+@property NSString *nameOfImage;
+@property NSString *numbleOfImage;
+@property (nonatomic, copy) ReturnTextBlock returnTextBlock;
+
+- (void)returnText:(ReturnTextBlock)block;
 
 @end
 

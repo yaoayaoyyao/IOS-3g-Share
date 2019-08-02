@@ -106,6 +106,7 @@
 		9E52F78C22F1D2BB00C8AF42 /* lines2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E52F78922F1D2BB00C8AF42 /* lines2.png */; };
 		9E52F78D22F1D2BB00C8AF42 /* lines3.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E52F78A22F1D2BB00C8AF42 /* lines3.png */; };
 		9E52F78F22F2057300C8AF42 /* essay_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E52F78E22F2057200C8AF42 /* essay_background.png */; };
+		9EAE228122F41624001B478D /* AccountUploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EAE228022F41624001B478D /* AccountUploadViewController.m */; };
 		9EB3BAF622EC89B200D615C6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EB3BAF522EC89B200D615C6 /* AppDelegate.m */; };
 		9EB3BAFC22EC89B200D615C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EB3BAFA22EC89B200D615C6 /* Main.storyboard */; };
 		9EB3BAFE22EC89B300D615C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9EB3BAFD22EC89B300D615C6 /* Assets.xcassets */; };
@@ -289,6 +290,8 @@
 		9E52F78922F1D2BB00C8AF42 /* lines2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lines2.png; sourceTree = "<group>"; };
 		9E52F78A22F1D2BB00C8AF42 /* lines3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lines3.png; sourceTree = "<group>"; };
 		9E52F78E22F2057200C8AF42 /* essay_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = essay_background.png; sourceTree = "<group>"; };
+		9EAE227F22F41624001B478D /* AccountUploadViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountUploadViewController.h; sourceTree = "<group>"; };
+		9EAE228022F41624001B478D /* AccountUploadViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountUploadViewController.m; sourceTree = "<group>"; };
 		9EB3BAF122EC89B200D615C6 /* Share.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Share.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EB3BAF422EC89B200D615C6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9EB3BAF522EC89B200D615C6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -446,6 +449,7 @@
 		9E42757B22EDC92500624673 /* ShareAccount */ = {
 			isa = PBXGroup;
 			children = (
+				9EAE227E22F415D0001B478D /* AccountUpload */,
 				9E52F76222F13F3C00C8AF42 /* AccountGood */,
 				9E52F73D22F1295800C8AF42 /* AccountMessage */,
 				9ED09C2F22F039FF004A1F37 /* AccountSetup */,
@@ -627,6 +631,15 @@
 				9E52F77B22F18E2F00C8AF42 /* ScanImageNSObject.m */,
 			);
 			path = MainHoliday;
+			sourceTree = "<group>";
+		};
+		9EAE227E22F415D0001B478D /* AccountUpload */ = {
+			isa = PBXGroup;
+			children = (
+				9EAE227F22F41624001B478D /* AccountUploadViewController.h */,
+				9EAE228022F41624001B478D /* AccountUploadViewController.m */,
+			);
+			path = AccountUpload;
 			sourceTree = "<group>";
 		};
 		9EB3BAE822EC89B200D615C6 = {
@@ -1004,6 +1017,7 @@
 				9E52F74722F12D8500C8AF42 /* AccountMessageFanViewController.m in Sources */,
 				9E52F76522F13F6800C8AF42 /* AccountGoodViewController.m in Sources */,
 				9EB3BB0422EC89B300D615C6 /* main.m in Sources */,
+				9EAE228122F41624001B478D /* AccountUploadViewController.m in Sources */,
 				9E52F76922F16C0200C8AF42 /* MainHolidayViewController.m in Sources */,
 				9EDF7E2F22EFEBD2001CCBFB /* BigWhiteTableViewCell.m in Sources */,
 				9EDF7E2C22EFE5D5001CCBFB /* BigWhiteViewController.m in Sources */,

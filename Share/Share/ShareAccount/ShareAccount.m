@@ -12,6 +12,7 @@
 #import "AccountSetup/AccountSetupViewController.h"
 #import "AccountMessage/AccountMessageViewController.h"
 #import "AccountGood/AccountGoodViewController.h"
+#import "AccountUpload/AccountUploadViewController.h"
 
 @interface ShareAccount ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -75,22 +76,21 @@
     self.hidesBottomBarWhenPushed = YES ;
     if (indexPath.section == 1) {
         if (indexPath.row == 0) {
+            AccountUploadViewController *accountUploadViewController = [[AccountUploadViewController alloc]init];
+            [self.navigationController pushViewController:accountUploadViewController animated:YES];
             
         }
         else if (indexPath.row == 1){
-            
             AccountMessageViewController *accountMessageViewController = [[AccountMessageViewController alloc]init];
             [self.navigationController pushViewController:accountMessageViewController animated:YES];
             
         }
         else if (indexPath.row == 2) {
-            
             AccountGoodViewController *accountGoodViewController = [[AccountGoodViewController alloc]init];
             [self.navigationController pushViewController:accountGoodViewController animated:YES];
             
         }
         else if (indexPath.row == 4){
-            
             AccountSetupViewController *accountSetupViewController = [[AccountSetupViewController alloc]init];
             //切换界面   NO：取消动画    不会卡页面
             [self.navigationController pushViewController:accountSetupViewController animated:YES] ;

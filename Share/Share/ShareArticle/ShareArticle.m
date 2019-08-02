@@ -164,6 +164,7 @@
     shareMainTableViewCell1.TypeLabel.text = @"设计文章-原创-理论";
     shareMainTableViewCell1.TimeLabel.text = @"16分钟前";
     [shareMainTableViewCell1.GoodButton setTitle:@"102" forState:UIControlStateNormal];
+    shareMainTableViewCell1.selectionStyle = UITableViewCellEditingStyleNone;
     [shareMainTableViewCell1.FanButton setTitle:@"26" forState:UIControlStateNormal];
 
     shareMainTableViewCell2.LeftImageView.image = [UIImage imageNamed:@"note_img2.png"];
@@ -171,6 +172,7 @@
     shareMainTableViewCell2.TypeLabel.text = @"设计文章-原创-Web/Flash";
     shareMainTableViewCell2.TimeLabel.text = @"17分钟前";
     [shareMainTableViewCell2.GoodButton setTitle:@"102" forState:UIControlStateNormal];
+    shareMainTableViewCell2.selectionStyle = UITableViewCellEditingStyleNone;
     [shareMainTableViewCell2.FanButton setTitle:@"26" forState:UIControlStateNormal];
 
     shareMainTableViewCell3.LeftImageView.image = [UIImage imageNamed:@"note_img3.png"];
@@ -178,6 +180,7 @@
     shareMainTableViewCell3.TypeLabel.text = @"设计文章-原创-设计观点";
     shareMainTableViewCell3.TimeLabel.text = @"45分钟前";
     [shareMainTableViewCell3.GoodButton setTitle:@"102" forState:UIControlStateNormal];
+    shareMainTableViewCell3.selectionStyle = UITableViewCellEditingStyleNone;
     [shareMainTableViewCell3.FanButton setTitle:@"26" forState:UIControlStateNormal];
 
     if (tableView.tag == 1) {

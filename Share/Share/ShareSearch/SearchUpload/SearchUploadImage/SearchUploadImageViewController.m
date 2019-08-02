@@ -8,7 +8,7 @@
 
 #import "SearchUploadImageViewController.h"
 
-@interface SearchUploadImageViewController ()<UIScrollViewDelegate>
+@interface SearchUploadImageViewController ()<UIScrollViewDelegate,UICollectionViewDelegate>
 
 @property UIScrollView *uploadImageScrollView;
 @property NSMutableArray *uploadImageMutableArray;
@@ -23,7 +23,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
-/*--------------------------导航栏---------------------------*/
+#pragma mark -- 导航栏
     UIBarButtonItem *leftImageBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back_img"] style:UIBarButtonItemStyleDone target:self action:@selector(pressLeft)];
     UIBarButtonItem *leftLabelBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"选择图片" style:UIBarButtonItemStyleDone target:self action:@selector(pressLeft)];
     //设置字号
@@ -39,7 +39,7 @@
     [rightBarButtonItem setTintColor:[UIColor whiteColor]];
     self.navigationItem.rightBarButtonItem = rightBarButtonItem;
     
-/*--------------------------图片---------------------------*/
+#pragma mark -- 图片
     _uploadImageMutableArray = [NSMutableArray arrayWithObjects:@"0", @"0", @"0", @"0", @"0", @"0", @"0", @"0", @"0", @"0", @"0", @"0", nil];
     _uploadImageScrollView = [[UIScrollView alloc]initWithFrame:self.view.bounds];
     _uploadImageScrollView.contentSize = CGSizeMake(375, 812);
@@ -55,19 +55,15 @@
             [_uploadImageScrollView addSubview:uploadImageButton];
             
             _buttonView = [[UIButton alloc]initWithFrame:uploadImageButton.frame];
-            _buttonView.backgroundColor = [UIColor blackColor];
+            _buttonView.backgroundColor = [UIColor grayColor];
             _buttonView.alpha = 0.1;
             _buttonView.tag = i * 3 + j;
             [_uploadImageScrollView addSubview:_buttonView];
-            _imageView = [[UIImageView alloc]init];
-            _imageView.image = [UIImage imageNamed:@"my_button_pressed.png"];
-            _imageView.frame = CGRectZero;
-            [_buttonView addSubview:_imageView];
             [_buttonView addTarget:self action:@selector(changeImage:) forControlEvents:UIControlEventTouchUpInside];
         }
     }
 }
-/*--------------------------导航栏---------------------------*/
+#pragma mark -- 导航栏
 - (void)pressLeft{
     //将当前视图弹出，返回到上一级界面
     [self.navigationController popViewControllerAnimated:YES] ;
@@ -90,23 +86,45 @@
 }
 
 
-/*--------------------------按钮---------------------------*/
+#pragma mark -- 按钮
 - (void)changeImage:(UIButton *)btn{
+    _imageView = [[UIImageView alloc]init];
+    _imageView.image = [UIImage imageNamed:@"my_button_pressed.png"];
+    _imageView.frame = CGRectMake(95, 5, 20, 20);
     if ([_uploadImageMutableArray[btn.tag] isEqualToString:@"0"]) {
         _uploadImageMutableArray[btn.tag] = @"1";
-        btn.alpha = 0.6;
-        
+        btn.alpha = 0.8;
+        btn.hidden = NO;
+        [btn addSubview:_imageView];
     }
     else if ([_uploadImageMutableArray[btn.tag] isEqualToString:@"1"]){
         _uploadImageMutableArray[btn.tag] = @"0";
         btn.alpha = 0.1;
+        [btn.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     }
 }
 
+#pragma mark -- 传值
+- (void)returnText:(ReturnTextBlock)block{
+    self.returnTextBlock = block;
+}
+- (void)didReceiveMemoryWarning{
+    [super didReceiveMemoryWarning];
+}
 
-
-
-
+- (void)viewWillDisappear:(BOOL)animated{
+    if (self.returnTextBlock != nil) {
+        int sum = 0;
+        for (int i = 11; i >= 0; i--) {
+            if ([_uploadImageMutableArray[i] isEqualToString:@"1"]) {
+                self.nameOfImage = [NSString stringWithFormat:@"%d.jpg", i + 1];
+                sum++;
+            }
+        }
+        self.numbleOfImage = [NSString stringWithFormat:@"%d", sum];
+        self.returnTextBlock(self.nameOfImage, self.numbleOfImage);
+    }
+}
 
 
 
