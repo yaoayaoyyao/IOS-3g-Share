@@ -106,7 +106,10 @@
 		9E52F78C22F1D2BB00C8AF42 /* lines2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E52F78922F1D2BB00C8AF42 /* lines2.png */; };
 		9E52F78D22F1D2BB00C8AF42 /* lines3.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E52F78A22F1D2BB00C8AF42 /* lines3.png */; };
 		9E52F78F22F2057300C8AF42 /* essay_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E52F78E22F2057200C8AF42 /* essay_background.png */; };
+		9E91B84A22F6F64900E0066C /* ShareBeginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E91B84922F6F64900E0066C /* ShareBeginViewController.m */; };
 		9EAE228122F41624001B478D /* AccountUploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EAE228022F41624001B478D /* AccountUploadViewController.m */; };
+		9EAE22C622F46A2E001B478D /* MessageChatDialogueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EAE22C522F46A2E001B478D /* MessageChatDialogueViewController.m */; };
+		9EAE22C822F472EB001B478D /* 勾.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EAE22C722F472EB001B478D /* 勾.png */; };
 		9EB3BAF622EC89B200D615C6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EB3BAF522EC89B200D615C6 /* AppDelegate.m */; };
 		9EB3BAFC22EC89B200D615C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EB3BAFA22EC89B200D615C6 /* Main.storyboard */; };
 		9EB3BAFE22EC89B300D615C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9EB3BAFD22EC89B300D615C6 /* Assets.xcassets */; };
@@ -290,8 +293,13 @@
 		9E52F78922F1D2BB00C8AF42 /* lines2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lines2.png; sourceTree = "<group>"; };
 		9E52F78A22F1D2BB00C8AF42 /* lines3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lines3.png; sourceTree = "<group>"; };
 		9E52F78E22F2057200C8AF42 /* essay_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = essay_background.png; sourceTree = "<group>"; };
+		9E91B84822F6F64900E0066C /* ShareBeginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareBeginViewController.h; sourceTree = "<group>"; };
+		9E91B84922F6F64900E0066C /* ShareBeginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareBeginViewController.m; sourceTree = "<group>"; };
 		9EAE227F22F41624001B478D /* AccountUploadViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountUploadViewController.h; sourceTree = "<group>"; };
 		9EAE228022F41624001B478D /* AccountUploadViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountUploadViewController.m; sourceTree = "<group>"; };
+		9EAE22C422F46A2E001B478D /* MessageChatDialogueViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageChatDialogueViewController.h; sourceTree = "<group>"; };
+		9EAE22C522F46A2E001B478D /* MessageChatDialogueViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageChatDialogueViewController.m; sourceTree = "<group>"; };
+		9EAE22C722F472EB001B478D /* 勾.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "勾.png"; sourceTree = "<group>"; };
 		9EB3BAF122EC89B200D615C6 /* Share.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Share.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EB3BAF422EC89B200D615C6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9EB3BAF522EC89B200D615C6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -468,6 +476,7 @@
 			children = (
 				9EFB501922F2E55A00C4B913 /* 上传图片 */,
 				9E373E2422F28A8E0096FF23 /* 线.png */,
+				9EAE22C722F472EB001B478D /* 勾.png */,
 				9E52F78822F1D2BB00C8AF42 /* lines1.png */,
 				9E52F78922F1D2BB00C8AF42 /* lines2.png */,
 				9E52F78A22F1D2BB00C8AF42 /* lines3.png */,
@@ -605,6 +614,7 @@
 		9E52F75B22F135E000C8AF42 /* AccountMessageChat */ = {
 			isa = PBXGroup;
 			children = (
+				9EAE22C322F469CD001B478D /* MessageChatDialogue */,
 				9E52F75C22F1361800C8AF42 /* AccountMessageChatViewController.h */,
 				9E52F75D22F1361800C8AF42 /* AccountMessageChatViewController.m */,
 				9E52F75F22F1362E00C8AF42 /* AccountMessageChatTableViewCell.h */,
@@ -633,6 +643,15 @@
 			path = MainHoliday;
 			sourceTree = "<group>";
 		};
+		9E91B84722F6F5F600E0066C /* ShareBegin */ = {
+			isa = PBXGroup;
+			children = (
+				9E91B84822F6F64900E0066C /* ShareBeginViewController.h */,
+				9E91B84922F6F64900E0066C /* ShareBeginViewController.m */,
+			);
+			path = ShareBegin;
+			sourceTree = "<group>";
+		};
 		9EAE227E22F415D0001B478D /* AccountUpload */ = {
 			isa = PBXGroup;
 			children = (
@@ -640,6 +659,15 @@
 				9EAE228022F41624001B478D /* AccountUploadViewController.m */,
 			);
 			path = AccountUpload;
+			sourceTree = "<group>";
+		};
+		9EAE22C322F469CD001B478D /* MessageChatDialogue */ = {
+			isa = PBXGroup;
+			children = (
+				9EAE22C422F46A2E001B478D /* MessageChatDialogueViewController.h */,
+				9EAE22C522F46A2E001B478D /* MessageChatDialogueViewController.m */,
+			);
+			path = MessageChatDialogue;
 			sourceTree = "<group>";
 		};
 		9EB3BAE822EC89B200D615C6 = {
@@ -673,8 +701,9 @@
 				9E42757822EDC8A600624673 /* ShareSearch */,
 				9E42757722EDC88200624673 /* ShareMain */,
 				9EB3BB2922ECB23B00D615C6 /* ShareLogin */,
-				9EB3BAF422EC89B200D615C6 /* AppDelegate.h */,
+				9E91B84722F6F5F600E0066C /* ShareBegin */,
 				9EB3BAF522EC89B200D615C6 /* AppDelegate.m */,
+				9EB3BAF422EC89B200D615C6 /* AppDelegate.h */,
 				9EB3BAFA22EC89B200D615C6 /* Main.storyboard */,
 				9EB3BAFD22EC89B300D615C6 /* Assets.xcassets */,
 				9EB3BAFF22EC89B300D615C6 /* LaunchScreen.storyboard */,
@@ -891,6 +920,7 @@
 				9E52F75122F1335400C8AF42 /* guanzhu_img5.png in Resources */,
 				9E373E2722F28B230096FF23 /* dizhi.png in Resources */,
 				9ED09C2622F02A4B004A1F37 /* radio_button_note.png in Resources */,
+				9EAE22C822F472EB001B478D /* 勾.png in Resources */,
 				9EDF7E2922EFE1BC001CCBFB /* radio_button_search1.png in Resources */,
 				9E52F75622F1335400C8AF42 /* sixin_img1.png in Resources */,
 				9E4277D922EE132900624673 /* kaiji1.png in Resources */,
@@ -1016,6 +1046,7 @@
 				9E373E2322F278790096FF23 /* SearchUploadViewController.m in Sources */,
 				9E52F74722F12D8500C8AF42 /* AccountMessageFanViewController.m in Sources */,
 				9E52F76522F13F6800C8AF42 /* AccountGoodViewController.m in Sources */,
+				9EAE22C622F46A2E001B478D /* MessageChatDialogueViewController.m in Sources */,
 				9EB3BB0422EC89B300D615C6 /* main.m in Sources */,
 				9EAE228122F41624001B478D /* AccountUploadViewController.m in Sources */,
 				9E52F76922F16C0200C8AF42 /* MainHolidayViewController.m in Sources */,
@@ -1029,6 +1060,7 @@
 				9ED09C8E22F0AE8C004A1F37 /* IntroductionLabelTableViewCell.m in Sources */,
 				9E52F76122F1362E00C8AF42 /* AccountMessageChatTableViewCell.m in Sources */,
 				9E52F74A22F12EF900C8AF42 /* AccountMessageFanTableViewCell.m in Sources */,
+				9E91B84A22F6F64900E0066C /* ShareBeginViewController.m in Sources */,
 				9ED09C8122F07D92004A1F37 /* AccountSetupModifyTableViewCell.m in Sources */,
 				9E42757E22EDC95B00624673 /* ShareMain.m in Sources */,
 				9EB3BB2C22ECB31A00D615C6 /* ShareLogin.m in Sources */,

@@ -14,6 +14,7 @@
 @property NSMutableArray *uploadImageMutableArray;
 @property UIButton *buttonView;
 @property UIImageView *imageView;
+@property NSInteger *flag;
 
 @end
 
@@ -23,6 +24,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
+    _flag = 0;
 #pragma mark -- 导航栏
     UIBarButtonItem *leftImageBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back_img"] style:UIBarButtonItemStyleDone target:self action:@selector(pressLeft)];
     UIBarButtonItem *leftLabelBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"选择图片" style:UIBarButtonItemStyleDone target:self action:@selector(pressLeft)];
@@ -55,7 +57,7 @@
             [_uploadImageScrollView addSubview:uploadImageButton];
             
             _buttonView = [[UIButton alloc]initWithFrame:uploadImageButton.frame];
-            _buttonView.backgroundColor = [UIColor grayColor];
+            _buttonView.backgroundColor = [UIColor clearColor];
             _buttonView.alpha = 0.1;
             _buttonView.tag = i * 3 + j;
             [_uploadImageScrollView addSubview:_buttonView];
@@ -65,6 +67,11 @@
 }
 #pragma mark -- 导航栏
 - (void)pressLeft{
+    if (self.returnTextBlock != nil) {
+        self.nameOfImage = nil;
+        self.numbleOfImage = nil;
+        self.returnTextBlock(self.nameOfImage, self.numbleOfImage);
+    }
     //将当前视图弹出，返回到上一级界面
     [self.navigationController popViewControllerAnimated:YES] ;
 }
@@ -73,6 +80,17 @@
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"确认上传所选内容" message:nil preferredStyle:UIAlertControllerStyleAlert];
     //添加默认按钮
     UIAlertAction* defaultBtn = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        if (self.returnTextBlock != nil) {
+            int sum = 0;
+            for (int i = 11; i >= 0; i--) {
+                if ([self->_uploadImageMutableArray[i] isEqualToString:@"1"]) {
+                    self.nameOfImage = [NSString stringWithFormat:@"%d.jpg", i + 1];
+                    sum++;
+                }
+            }
+            self.numbleOfImage = [NSString stringWithFormat:@"%d", sum];
+            self.returnTextBlock(self.nameOfImage, self.numbleOfImage);
+        }
         [self.navigationController popViewControllerAnimated:YES];
     }];
     [alert addAction:defaultBtn];
@@ -89,16 +107,18 @@
 #pragma mark -- 按钮
 - (void)changeImage:(UIButton *)btn{
     _imageView = [[UIImageView alloc]init];
-    _imageView.image = [UIImage imageNamed:@"my_button_pressed.png"];
-    _imageView.frame = CGRectMake(95, 5, 20, 20);
+    _imageView.image = [UIImage imageNamed:@"勾.png"];
+    _imageView.frame = CGRectMake(90, 5, 25, 25);
+    [_imageView setTintColor:[UIColor whiteColor]];
     if ([_uploadImageMutableArray[btn.tag] isEqualToString:@"0"]) {
         _uploadImageMutableArray[btn.tag] = @"1";
-        btn.alpha = 0.8;
-        btn.hidden = NO;
+        btn.backgroundColor = [UIColor blackColor];
+        btn.alpha = 0.6;
         [btn addSubview:_imageView];
     }
     else if ([_uploadImageMutableArray[btn.tag] isEqualToString:@"1"]){
         _uploadImageMutableArray[btn.tag] = @"0";
+        btn.backgroundColor = [UIColor clearColor];
         btn.alpha = 0.1;
         [btn.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     }
@@ -108,23 +128,8 @@
 - (void)returnText:(ReturnTextBlock)block{
     self.returnTextBlock = block;
 }
-- (void)didReceiveMemoryWarning{
-    [super didReceiveMemoryWarning];
-}
 
-- (void)viewWillDisappear:(BOOL)animated{
-    if (self.returnTextBlock != nil) {
-        int sum = 0;
-        for (int i = 11; i >= 0; i--) {
-            if ([_uploadImageMutableArray[i] isEqualToString:@"1"]) {
-                self.nameOfImage = [NSString stringWithFormat:@"%d.jpg", i + 1];
-                sum++;
-            }
-        }
-        self.numbleOfImage = [NSString stringWithFormat:@"%d", sum];
-        self.returnTextBlock(self.nameOfImage, self.numbleOfImage);
-    }
-}
+
 
 
 

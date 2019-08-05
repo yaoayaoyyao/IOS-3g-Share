@@ -54,13 +54,10 @@
 }
 
 - (void)tabBarSighUp{
-//    if ([_userEmail.text isEqualToString:@""] || [_userName.text isEqualToString:@""] || [_userPassword.text isEqualToString:@""]) {
-//
-//    }
-//    else{
-        ShareLogin *shareLogin = [[ShareLogin alloc] init];
-        [self presentViewController:shareLogin animated:YES completion:nil];
-//    }
+    [self dismissViewControllerAnimated:YES completion:nil];
+    if ([_sighUpDelegate respondsToSelector:@selector(Name:andPassword:)]) {
+        [_sighUpDelegate Name:_userName.text andPassword:_userPassword.text];
+    }
 }
 
 

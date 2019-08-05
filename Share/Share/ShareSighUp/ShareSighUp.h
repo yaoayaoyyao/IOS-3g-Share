@@ -9,8 +9,13 @@
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
+@protocol ShareSighUpDelegate <NSObject>
+- (void)Name:(NSString *)name andPassword:(NSString *)password;
+
+@end
 
 @interface ShareSighUp : UIViewController
+@property (nonatomic, weak)id<ShareSighUpDelegate>sighUpDelegate;
 
 @end
 

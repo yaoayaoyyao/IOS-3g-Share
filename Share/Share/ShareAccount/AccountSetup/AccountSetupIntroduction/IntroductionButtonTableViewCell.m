@@ -30,12 +30,10 @@
     _nameLabel.frame = CGRectMake(30, 15, 50, 20);
     
     _manButton.frame = CGRectMake(80, 10, 80, 30);
-    [_manButton setImage:[UIImage imageNamed:@"boy_button.png"] forState:UIControlStateNormal];
     [_manButton setTitle:@"男" forState:UIControlStateNormal];
     [_manButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     
     _womanButton.frame = CGRectMake(170, 10, 80, 30);
-    [_womanButton setImage:[UIImage imageNamed:@"girl_button.png"] forState:UIControlStateNormal];
     [_womanButton setTitle:@"女" forState:UIControlStateNormal];
     [_womanButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
 }

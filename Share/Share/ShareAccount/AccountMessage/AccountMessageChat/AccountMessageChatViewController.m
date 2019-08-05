@@ -8,6 +8,7 @@
 
 #import "AccountMessageChatViewController.h"
 #import "AccountMessageChatTableViewCell.h"
+#import "MessageChatDialogue/MessageChatDialogueViewController.h"
 
 @interface AccountMessageChatViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -74,7 +75,13 @@
     
     return _accountMessageChatTableViewCell;
 }
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    self.hidesBottomBarWhenPushed = YES;
+    if (indexPath.row == 1) {
+        MessageChatDialogueViewController *messageChatDialogueViewController = [[MessageChatDialogueViewController alloc]init];
+        [self.navigationController pushViewController:messageChatDialogueViewController animated:YES];
+    }
+}
 
 
 /*

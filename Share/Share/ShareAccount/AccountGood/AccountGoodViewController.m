@@ -99,6 +99,8 @@
     [_accountGoodTableViewCell.GoodButton setTitle:[GoodButtonArray objectAtIndex:indexPath.section] forState:UIControlStateNormal];
     [_accountGoodTableViewCell.FanButton setTitle:[FanButtonArray objectAtIndex:indexPath.section] forState:UIControlStateNormal];
     
+    [_accountGoodTableViewCell.GoodButton setImage:[UIImage imageNamed:@"button_zan.png"] forState:UIControlStateNormal];
+    
     _accountGoodTableViewCell.selectionStyle = UITableViewCellEditingStyleNone;
     
     return _accountGoodTableViewCell;

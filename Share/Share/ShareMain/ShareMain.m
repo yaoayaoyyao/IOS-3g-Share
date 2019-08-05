@@ -17,6 +17,7 @@ UIScrollViewAccessibilityDelegate>
 @property ShareMainTableViewCell *shareMainTableViewCell;
 @property NSMutableArray *flagOfGoodButtonMutableArray;
 @property NSMutableArray *GoodButtonMutableArray;
+@property NSArray *arrayBefore;
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UIPageControl *pageControl;
 @property (nonatomic, strong) NSTimer *timer;
@@ -31,6 +32,7 @@ UIScrollViewAccessibilityDelegate>
     
     _flagOfGoodButtonMutableArray = [NSMutableArray arrayWithObjects:@"0", @"0", @"0", @"0", nil];
     _GoodButtonMutableArray = [NSMutableArray arrayWithObjects:@"102", @"102", @"45", @"66", nil];
+    _arrayBefore = [NSArray arrayWithObjects:@"103", @"103", @"46", @"67", nil];
     /*---------------------导航栏-----------------------*/
     
     self.navigationItem.title = @"SHARE" ;
@@ -43,6 +45,7 @@ UIScrollViewAccessibilityDelegate>
     _shareMainTableView = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
     _shareMainTableView.delegate = self;
     _shareMainTableView.dataSource = self;
+    _shareMainTableView.tag = 111;
     [self.view addSubview:_shareMainTableView];
     UIView *view = [[UIView alloc]initWithFrame: CGRectMake( 10, 0, 355, 179)];
     
@@ -120,12 +123,21 @@ UIScrollViewAccessibilityDelegate>
     _shareMainTableViewCell.NameLabel.text = [NameLabelArray objectAtIndex:indexPath.section];
     _shareMainTableViewCell.TypeLabel.text = [TypeLabelArray objectAtIndex:indexPath.section];
     _shareMainTableViewCell.TimeLabel.text = [TimeLabelArray objectAtIndex:indexPath.section];
-    [_shareMainTableViewCell.GoodButton setTitle:[_GoodButtonMutableArray objectAtIndex:indexPath.section] forState:UIControlStateNormal];
     [_shareMainTableViewCell.FanButton setTitle:[FanButtonArray objectAtIndex:indexPath.section] forState:UIControlStateNormal];
     
     [_shareMainTableViewCell.GoodButton addTarget:self action:@selector(changeNumbel:) forControlEvents:UIControlEventTouchUpInside];
     
     _shareMainTableViewCell.selectionStyle = UITableViewCellEditingStyleNone;
+    
+    if ([_flagOfGoodButtonMutableArray[indexPath.section] isEqualToString:@"1"]) {
+        [_shareMainTableViewCell.GoodButton setImage:[UIImage imageNamed:@"button_zanok.png"] forState:UIControlStateNormal];
+        [_shareMainTableViewCell.GoodButton setTitle:_arrayBefore[_shareMainTableViewCell.GoodButton.tag] forState:UIControlStateNormal];
+    }
+    else{
+        [_shareMainTableViewCell.GoodButton setImage:[UIImage imageNamed:@"button_zan.png"] forState:UIControlStateNormal];
+        [_shareMainTableViewCell.GoodButton setTitle:_GoodButtonMutableArray[_shareMainTableViewCell.GoodButton.tag] forState:UIControlStateNormal];
+    }
+    
     return _shareMainTableViewCell;
 }
 
@@ -167,7 +179,6 @@ UIScrollViewAccessibilityDelegate>
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
         self.hidesBottomBarWhenPushed = YES;
-        
         MainHolidayViewController *mainHolidayViewController = [[MainHolidayViewController alloc]init];
         [self.navigationController pushViewController:mainHolidayViewController animated:YES];
         
@@ -177,10 +188,9 @@ UIScrollViewAccessibilityDelegate>
 
 //按钮点击事件
 - (void)changeNumbel:(UIButton *)btn{
-    NSArray *arrayBefore = [NSArray arrayWithObjects:@"103", @"103", @"46", @"67", nil];
     if ([_flagOfGoodButtonMutableArray[btn.tag] isEqualToString:@"0"]) {
         _flagOfGoodButtonMutableArray[btn.tag] = @"1";
-        [btn setTitle:arrayBefore[btn.tag] forState:UIControlStateNormal];
+        [btn setTitle:_arrayBefore[btn.tag] forState:UIControlStateNormal];
         [btn setImage:[UIImage imageNamed:@"button_zanok.png"] forState:UIControlStateNormal];
     }
     else{
@@ -256,16 +266,26 @@ UIScrollViewAccessibilityDelegate>
 
 /*-------------------------------透明度------------------------------*/
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    if (scrollView.contentOffset.y > 0) {
-        CGFloat alpha = scrollView.contentOffset.y / 100;
-        self.navigationController.navigationBar.alpha = 1 - alpha;
-        self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.29f green:0.63f blue:0.88f alpha:1.00f];
-//        self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
-    }
-    else if (scrollView.contentOffset.y == 0) {
-        self.navigationController.navigationBar.alpha = 1;
+    if (scrollView.tag == 111) {
+        CGFloat y = scrollView.contentOffset.y + 88;
+        if (y > 0) {
+            CGFloat alpha = y / 100;
+            self.navigationController.navigationBar.alpha = 1 - alpha;
+            self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.29f green:0.63f blue:0.88f alpha:1.00f];
+            //        self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
+        }
+        else if (y == 0) {
+            self.navigationController.navigationBar.alpha = 1;
+        }
     }
 }
+
+
+
+
+
+
+
 
 /*
 #pragma mark - Navigation

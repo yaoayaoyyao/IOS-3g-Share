@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ShareLogin/ShareLogin.h"
+#import "ShareBegin/ShareBeginViewController.h"
 
 @interface AppDelegate ()
 
@@ -22,8 +23,8 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     [self.window makeKeyAndVisible];
     
-    ShareLogin *shareLogin = [[ShareLogin alloc]init];
-    self.window.rootViewController = shareLogin;
+    ShareBeginViewController *shareBeginViewController = [[ShareBeginViewController alloc]init];
+    self.window.rootViewController = shareBeginViewController;
     
     
     return YES;

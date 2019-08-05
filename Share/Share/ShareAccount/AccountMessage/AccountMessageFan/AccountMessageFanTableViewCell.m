@@ -19,8 +19,8 @@
     _nameLabel = [[UILabel alloc]init];
     [self.contentView addSubview:_nameLabel];
     
-    _rightImageView = [[UIImageView alloc]init];
-    [self.contentView addSubview:_rightImageView];
+    _rightButton = [[UIButton alloc]init];
+    [self.contentView addSubview:_rightButton];
     
     return self;
 }
@@ -32,7 +32,7 @@
     
     _nameLabel.frame = CGRectMake(100, 30, 200, 20);
     
-    _rightImageView.frame = CGRectMake(310, 30, 50, 20);
+    _rightButton.frame = CGRectMake(310, 30, 50, 20);
     
 }
 

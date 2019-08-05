@@ -183,6 +183,12 @@
     shareMainTableViewCell3.selectionStyle = UITableViewCellEditingStyleNone;
     [shareMainTableViewCell3.FanButton setTitle:@"26" forState:UIControlStateNormal];
 
+    [shareMainTableViewCell1.GoodButton setImage:[UIImage imageNamed:@"button_zan.png"] forState:UIControlStateNormal];
+    [shareMainTableViewCell2.GoodButton setImage:[UIImage imageNamed:@"button_zan.png"] forState:UIControlStateNormal];
+    [shareMainTableViewCell3.GoodButton setImage:[UIImage imageNamed:@"button_zan.png"] forState:UIControlStateNormal];
+    
+    
+    
     if (tableView.tag == 1) {
         if (indexPath.section == 0) {
             return shareMainTableViewCell1;

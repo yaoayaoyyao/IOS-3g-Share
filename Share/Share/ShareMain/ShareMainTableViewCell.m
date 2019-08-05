@@ -54,7 +54,7 @@
     _TimeLabel.textColor = [UIColor grayColor];
     
     
-    [_GoodButton setImage:[UIImage imageNamed:@"button_zan.png"] forState:UIControlStateNormal];
+//    [_GoodButton setImage:[UIImage imageNamed:@"button_zan.png"] forState:UIControlStateNormal];
     [_GoodButton setTitleColor:[UIColor colorWithRed:0.44f green:0.69f blue:0.85f alpha:1.00f] forState:UIControlStateNormal];
     _GoodButton.frame = CGRectMake(150, 88, 70, 20);
     

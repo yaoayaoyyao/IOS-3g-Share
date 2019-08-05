@@ -50,7 +50,7 @@
     UIImageView *holidayLineImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 100, 375, 2)];
     holidayLineImageView.image = [UIImage imageNamed:@"holiday_line.png"];
     
-    _mainHolidayScrollView.contentSize = CGSizeMake(375, 1500);
+    _mainHolidayScrollView.contentSize = CGSizeMake(375, 1350);
     [_mainHolidayScrollView addSubview:holidayHeadImageView];
     [_mainHolidayScrollView addSubview:holidayThemeLabel];
     [_mainHolidayScrollView addSubview:holidayNameLabel];

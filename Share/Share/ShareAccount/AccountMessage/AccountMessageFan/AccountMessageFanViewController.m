@@ -13,6 +13,7 @@
 
 @property UITableView *accountMessageFanTableView;
 @property AccountMessageFanTableViewCell *accountMessageFanTableViewCell;
+@property NSMutableArray *rightButtonArray;
 
 @end
 
@@ -21,6 +22,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    _rightButtonArray = [NSMutableArray arrayWithObjects:@"1", @"1", @"1", @"1", @"0", @"0", nil];
     
 /*--------------------------导航栏---------------------------*/
     UIBarButtonItem *leftImageBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back_img"] style:UIBarButtonItemStyleDone target:self action:@selector(pressLeft)];
@@ -64,16 +67,33 @@
     
     NSMutableArray *leftImageArray = [NSMutableArray arrayWithObjects:@"sixin_img1.png", @"sixin_img2.png", @"sixin_img3.png", @"sixin_img4.png", @"guanzhu_img5.png", @"guanzhu_img6.png", nil];
     NSMutableArray *nameLabelArray = [NSMutableArray arrayWithObjects:@"share小格", @"share小兰", @"share小明", @"share小雪", @"share萌萌", @"sharetLity", nil];
-    NSMutableArray *rightImageArray = [NSMutableArray arrayWithObjects:@"guanzhu_pressed.png", @"guanzhu_pressed.png", @"guanzhu_pressed.png", @"guanzhu_pressed.png", @"guanzhu_normal.png", @"guanzhu_normal.png", nil];
     
     _accountMessageFanTableViewCell.leftImageView.image = [UIImage imageNamed:[leftImageArray objectAtIndex:indexPath.row]];
     _accountMessageFanTableViewCell.nameLabel.text = [nameLabelArray objectAtIndex:indexPath.row];
-    _accountMessageFanTableViewCell.rightImageView.image = [UIImage imageNamed:[rightImageArray objectAtIndex:indexPath.row]];
-    
+    if ([_rightButtonArray[indexPath.row] isEqualToString: @"1"]) {
+        [_accountMessageFanTableViewCell.rightButton setImage:[UIImage imageNamed:@"guanzhu_pressed.png"] forState:UIControlStateNormal];
+    }
+    else {
+        [_accountMessageFanTableViewCell.rightButton setImage:[UIImage imageNamed:@"guanzhu_normal.png"] forState:UIControlStateNormal];
+    }
+    _accountMessageFanTableViewCell.rightButton.tag = indexPath.row;
+    [_accountMessageFanTableViewCell.rightButton addTarget:self action:@selector(change:) forControlEvents:UIControlEventTouchUpInside];
     _accountMessageFanTableViewCell.selectionStyle = UITableViewCellEditingStyleNone;
     
     return _accountMessageFanTableViewCell;
 }
+
+- (void)change:(UIButton *)btn{
+    if ([_rightButtonArray[btn.tag] isEqualToString:@"1"]) {
+        _rightButtonArray[btn.tag] = @"0";
+        [btn setImage:[UIImage imageNamed:@"guanzhu_normal.png"] forState:UIControlStateNormal];
+    }
+    else {
+        _rightButtonArray[btn.tag] = @"1";
+        [btn setImage:[UIImage imageNamed:@"guanzhu_pressed.png"] forState:UIControlStateNormal];
+    }
+}
+
 
 
 /*

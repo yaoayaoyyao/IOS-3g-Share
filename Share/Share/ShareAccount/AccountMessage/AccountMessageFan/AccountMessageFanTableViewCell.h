@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property UIImageView *leftImageView;
 @property UILabel *nameLabel;
-@property UIImageView *rightImageView;
+@property UIButton *rightButton;
 
 @end
 

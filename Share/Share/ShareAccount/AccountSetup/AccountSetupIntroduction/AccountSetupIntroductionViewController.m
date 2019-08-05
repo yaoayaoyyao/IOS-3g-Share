@@ -14,6 +14,8 @@
 @interface AccountSetupIntroductionViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property UITableView *introductionTableView;
+@property NSInteger *flag;
+@property IntroductionButtonTableViewCell *introductionButtonTableViewCell;
 
 @end
 
@@ -23,6 +25,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
+    _flag = 0;
 /*--------------------------导航栏---------------------------*/
     UIBarButtonItem *leftImageBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back_img"] style:UIBarButtonItemStyleDone target:self action:@selector(pressLeft)];
     UIBarButtonItem *leftLabelBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"基本资料" style:UIBarButtonItemStyleDone target:self action:@selector(pressLeft)];
@@ -71,9 +74,19 @@
         
     } else if (indexPath.row == 3){
         
-        IntroductionButtonTableViewCell *introductionButtonTableViewCell = [[IntroductionButtonTableViewCell alloc]init];
-        introductionButtonTableViewCell.selectionStyle = UITableViewCellEditingStyleNone;
-        return introductionButtonTableViewCell;
+        _introductionButtonTableViewCell = [[IntroductionButtonTableViewCell alloc]init];
+        if (_flag == 0) {
+            [_introductionButtonTableViewCell.manButton setImage:[UIImage imageNamed:@"boy_button.png"] forState:UIControlStateNormal];
+            [_introductionButtonTableViewCell.womanButton setImage:[UIImage imageNamed:@"girl_button.png"] forState:UIControlStateNormal];
+        }
+        else {
+            [_introductionButtonTableViewCell.manButton setImage:[UIImage imageNamed:@"girl_button.png"] forState:UIControlStateNormal];
+            [_introductionButtonTableViewCell.womanButton setImage:[UIImage imageNamed:@"boy_button.png"] forState:UIControlStateNormal];
+        }
+        [_introductionButtonTableViewCell.manButton addTarget:self action:@selector(change:) forControlEvents:UIControlEventTouchUpInside];
+        [_introductionButtonTableViewCell.womanButton addTarget:self action:@selector(change:) forControlEvents:UIControlEventTouchUpInside];
+        _introductionButtonTableViewCell.selectionStyle = UITableViewCellEditingStyleNone;
+        return _introductionButtonTableViewCell;
         
     } else{
         
@@ -89,6 +102,20 @@
         
     }
 }
+
+- (void)change:(UIButton *)btn{
+    if (_flag == 0) {
+        _flag = 1;
+        [_introductionButtonTableViewCell.manButton setImage:[UIImage imageNamed:@"girl_button.png"] forState:UIControlStateNormal];
+        [_introductionButtonTableViewCell.womanButton setImage:[UIImage imageNamed:@"boy_button.png"] forState:UIControlStateNormal];
+    }
+    else {
+        _flag = 0;
+        [_introductionButtonTableViewCell.manButton setImage:[UIImage imageNamed:@"boy_button.png"] forState:UIControlStateNormal];
+        [_introductionButtonTableViewCell.womanButton setImage:[UIImage imageNamed:@"girl_button.png"] forState:UIControlStateNormal];
+    }
+}
+
 
 
 /*

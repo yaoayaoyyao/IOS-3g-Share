@@ -22,6 +22,7 @@
 @property NSMutableArray *uploadMutableArray;
 @property NSMutableArray *upMutableArray;
 @property UIButton *imageButton;
+@property UIButton *btn;
 
 @end
 
@@ -188,7 +189,6 @@
     self.hidesBottomBarWhenPushed = YES ;
 
     SearchUploadImageViewController *searchUploadImageViewController = [[SearchUploadImageViewController alloc]init];
-//    UINavigationController *navUpload = [[UINavigationController alloc]initWithRootViewController:searchUploadImageViewController];
     
     [searchUploadImageViewController returnText:^(NSString *name, NSString *numble){
         self->nameOfImage = name;
@@ -258,13 +258,21 @@
         [_imageButton setTitle:@"" forState:UIControlStateNormal];
         [_imageButton setImage:[UIImage imageNamed:nameOfImage] forState:UIControlStateNormal];
         _imageButton.backgroundColor = [UIColor clearColor];
-        UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(170, 10, 20, 20)];
-        [btn setTitle:numbleOfImage forState:UIControlStateNormal];
-        btn.backgroundColor = [UIColor colorWithRed:0.90f green:0.31f blue:0.05f alpha:1.00f];
-        [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [_imageButton addSubview:btn];
-        btn.layer.cornerRadius = 10;
-        btn.layer.masksToBounds = YES;
+        _btn = [[UIButton alloc]initWithFrame:CGRectMake(170, 10, 20, 20)];
+        [_btn setTitle:numbleOfImage forState:UIControlStateNormal];
+        _btn.backgroundColor = [UIColor colorWithRed:0.90f green:0.31f blue:0.05f alpha:1.00f];
+        [_btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_imageButton addSubview:_btn];
+        _btn.layer.cornerRadius = 10;
+        _btn.layer.masksToBounds = YES;
+    }
+    else {
+        [_imageButton setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+        [_btn removeFromSuperview];
+        [_imageButton setTitle:@"选择图片" forState:UIControlStateNormal];
+        [_imageButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        _imageButton.backgroundColor = [UIColor colorWithRed:0.83f green:0.83f blue:0.84f alpha:1.00f];
+        
     }
 }
 

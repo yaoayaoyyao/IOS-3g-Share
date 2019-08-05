@@ -15,7 +15,7 @@
 #import "ShareSighUp.h"
 
 
-@interface ShareLogin ()<UITextFieldDelegate>
+@interface ShareLogin ()<UITextFieldDelegate,ShareSighUpDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (retain, nonatomic) UITextField *userName;
@@ -175,8 +175,12 @@
 /*-------------------------注册-----------------------------*/
 - (void)tabBarSighUp{
     ShareSighUp *shareSighUp = [[ShareSighUp alloc] init];
+    shareSighUp.sighUpDelegate = self;
     [self presentViewController:shareSighUp animated:YES completion:nil];
-    
+}
+- (void)Name:(NSString *)name andPassword:(NSString *)password{
+    _userName.text = name;
+    _userPassword.text = password;
 }
 
 - (void)automaticChange{
